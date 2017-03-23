@@ -1,16 +1,16 @@
 {
-  "name": "debugging-docker-images",
+  "name": "caching-node-modules",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start-web": "node ./web/bin/www",
-    "docker:build": "docker build -t debugging-docker-images .",
-    "docker:build:dev": "docker build -t debugging-docker-images:dev -f dev.dockerfile .",
-    "docker:run": "docker run -d -p 3000:3000 --name ddi-prod debugging-docker-images",
-    "docker:run:dev": "docker run -d -p 3000:3000 -p 5858:5858 -p 35729:35729 -v $PWD:/var/app --name ddi-dev debugging-docker-images:dev",
-    "docker:shell:dev": "docker exec -it ddi-dev /bin/sh; exit 0",
-    "docker:shell:dev:root": "docker exec -it --user root ddi-dev /bin/sh; exit 0",
-    "docker:clean": "docker stop ddi-dev ddi-prod; docker rm ddi-dev ddi-prod; docker rmi debugging-docker-images debugging-docker-images:dev; exit 0"
+    "docker:build": "docker build -t caching-node-modules .",
+    "docker:build:dev": "docker build -t caching-node-modules:dev -f dev.dockerfile .",
+    "docker:run": "docker run -d -p 3000:3000 --name cnm-prod caching-node-modules",
+    "docker:run:dev": "docker run -d -p 3000:3000 -p 5858:5858 -p 35729:35729 -v $PWD:/var/app --name cnm-dev caching-node-modules:dev",
+    "docker:shell:dev": "docker exec -it cnm-dev /bin/sh; exit 0",
+    "docker:shell:dev:root": "docker exec -it --user root cnm-dev /bin/sh; exit 0",
+    "docker:clean": "docker stop cnm-dev cnm-prod; docker rm cnm-dev cnm-prod; docker rmi caching-node-modules caching-node-modules:dev; exit 0"
   },
   "dependencies": {
     "bcrypt": "^1.0.2",

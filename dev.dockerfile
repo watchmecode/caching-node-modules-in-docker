@@ -1,4 +1,4 @@
-FROM debugging-docker-images
+FROM caching-node-modules
 
 # reset permissions back to root for installation
 USER root
