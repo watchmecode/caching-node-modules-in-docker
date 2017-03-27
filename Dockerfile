@@ -5,14 +5,18 @@ ADD https://github.com/Yelp/dumb-init/releases/download/v1.1.1/dumb-init_1.1.1_a
 RUN chmod +x /usr/local/bin/dumb-init
 
 # put the app in the right folder
-# be sure you have a .dockerignore file for COPY
 RUN mkdir -p /var/app
 WORKDIR /var/app
-COPY ./ /var/app
+
+# cache the package.json first
+COPY ./package.json /var/app
 
 # install build tools and production modules
 RUN apk add --no-cache make gcc g++ python
 RUN npm install --production
+
+# be sure you have a .dockerignore file for COPY
+COPY ./ /var/app
 
 # environment variables and port numbers
 ENV NODE_ENV=production NODE_PATH=./lib:.

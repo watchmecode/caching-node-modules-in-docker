@@ -13,5 +13,7 @@ RUN npm install -g nodemon grunt-cli
 # reset user back to app, for lowered prmissions at runtime
 USER app
 
+VOLUME /var/app/node_modules
+
 # custom start up command to handle npm install
 CMD ["./web-dev.sh"]
